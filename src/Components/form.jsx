@@ -1,6 +1,6 @@
 import React from "react";
 import "./form.css";
-import { withRouter, Link } from "react-router-dom";
+//import { withRouter, Link } from "react-router-dom";
 
 class Form extends React.Component {
   constructor(props) {
@@ -51,6 +51,9 @@ class Form extends React.Component {
 
   componentDidMount() {
     this._ismounted = true;
+  }
+
+  potato() {
     for (let index in this.props.opacities) {
       if (this.props.opacities[index] === true) {
         console.log("yer gud buddi");
@@ -58,7 +61,7 @@ class Form extends React.Component {
         this.styling[this.stylestring[index]] = "none";
       }
     }
-    console.log(this.styling);
+    console.log(JSON.stringify(this.styling[this.stylestring[2]]));
   }
 
   componentWillUnmount() {
@@ -73,40 +76,41 @@ class Form extends React.Component {
   }
 
   render() {
+    this.potato();
     return (
       <form>
         <input
           name="firstName"
-          placeholder="First Name"
+          placeholder={this.props.names[0]}
           value={this.state.firstName}
-          id={this.styling[1]}
+          className={this.styling[this.stylestring[0]]}
           onChange={e => this.change(e)}
         />
         <br />
         <br />
         <input
           name="lastName"
-          placeholder="Last Name"
+          placeholder={this.props.names[1]}
           value={this.state.lastName}
-          id="lastName"
+          className={this.styling[this.stylestring[1]]}
           onChange={e => this.setState({ lastName: e.target.value })}
         />
         <br />
         <br />
         <input
           name="username"
-          placeholder="Username"
+          placeholder={this.props.names[2]}
           value={this.state.username}
-          id="username"
+          className={this.styling[this.stylestring[2]]}
           onChange={e => this.change(e)}
         />
         <br />
         <br />
         <input
           name="email"
-          placeholder="Email"
+          placeholder={this.props.names[3]}
           value={this.state.email}
-          id="email"
+          className={this.styling[this.stylestring[3]]}
           onChange={e => this.change(e)}
         />
         <br />
@@ -114,9 +118,9 @@ class Form extends React.Component {
         <input
           name="password"
           type="password"
-          placeholder="Password"
+          placeholder={this.props.names[4]}
           value={this.state.password}
-          id="password"
+          className={this.styling[this.stylestring[4]]}
           onChange={e => this.change(e)}
         />
         <br />
