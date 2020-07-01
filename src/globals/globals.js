@@ -1,8 +1,16 @@
-function setCookie(cname, cvalue, exdays) {
+function setExpiry(exyears) {
   var d = new Date();
-  d.setTime(d.getTime() + exdays * 24 * 60 * 60 * 1000);
-  var expires = "expires=" + d.toUTCString();
-  document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+  d.setTime(d.getTime() + exyears * 24 * 60 * 60 * 1000 * 365);
+  document.cookie = "expires=" + d.toUTCString() + ";path=/";
+}
+
+function setThing(cvalue) {
+  if (cvalue[0] !== "submitted") {
+    //console.log(cvalue[0]);
+    //console.log(cvalue[1]);
+    document.cookie = cvalue[0] + "=" + cvalue[1] + ";";
+    //console.log(document.cookie);
+  }
 }
 
 function getCookie(cname) {
@@ -20,7 +28,14 @@ function getCookie(cname) {
   return "";
 }
 
-export default {
-  getCookie,
-  setCookie
-};
+function clearCookie() {
+  var cookies = document.cookie.split(";");
+  for (var i = 0; i < cookies.length; i++) {
+    var cookie = cookies[i];
+    var eqPos = cookie.indexOf("=");
+    var name = eqPos > -1 ? cookie.substr(0, eqPos) : cookie;
+    document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT";
+  }
+}
+
+export { getCookie, setExpiry, clearCookie, setThing };

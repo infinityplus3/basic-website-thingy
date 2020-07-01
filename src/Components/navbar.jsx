@@ -3,6 +3,7 @@ import "./navbar.css";
 import { withRouter, Link } from "react-router-dom";
 import { getCookie } from "../globals/globals.js";
 
+//finished
 class NavBar extends React.Component {
   constructor(props) {
     super(props);

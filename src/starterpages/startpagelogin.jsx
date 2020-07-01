@@ -3,6 +3,7 @@ import "./startpage.css";
 import { withRouter, Link } from "react-router-dom";
 import NavBar from "../Components/navbar.jsx";
 
+//finished
 class StarterPage extends React.Component {
   constructor(props) {
     super(props);
@@ -38,4 +39,4 @@ class StarterPage extends React.Component {
   }
 }
 
-export default StarterPage;
+export default withRouter(StarterPage);

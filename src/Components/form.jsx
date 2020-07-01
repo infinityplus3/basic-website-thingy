@@ -1,7 +1,7 @@
 import React from "react";
 import "./form.css";
-//import { withRouter, Link } from "react-router-dom";
 
+//finished
 class Form extends React.Component {
   constructor(props) {
     super(props);
@@ -51,17 +51,18 @@ class Form extends React.Component {
 
   componentDidMount() {
     this._ismounted = true;
+    console.log(this.props.redirect);
   }
 
   potato() {
     for (let index in this.props.opacities) {
       if (this.props.opacities[index] === true) {
-        console.log("yer gud buddi");
+        //console.log("yer gud buddi");
       } else {
         this.styling[this.stylestring[index]] = "none";
       }
     }
-    console.log(JSON.stringify(this.styling[this.stylestring[2]]));
+    //console.log(JSON.stringify(this.styling[this.stylestring[2]]));
   }
 
   componentWillUnmount() {
@@ -125,7 +126,7 @@ class Form extends React.Component {
         />
         <br />
         <br />
-        <button onClick={e => this.onSubmit(e)}>Submit</button>
+        <button onClick={e => this.onSubmit(e)}>{this.props.names[5]}</button>
       </form>
     );
   }
