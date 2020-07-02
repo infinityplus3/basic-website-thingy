@@ -51,7 +51,6 @@ class Form extends React.Component {
 
   componentDidMount() {
     this._ismounted = true;
-    console.log(this.props.redirect);
   }
 
   potato() {

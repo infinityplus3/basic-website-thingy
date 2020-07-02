@@ -20,8 +20,8 @@ class NavBar extends React.Component {
     this._ismounted = true;
     if (document.cookie !== null && document.cookie !== "") {
       try {
-        if (getCookie("user") !== "") {
-          let username = getCookie("user");
+        if (getCookie("username") !== "") {
+          let username = getCookie("username");
           this.setState({
             user: <span className="profile">{username}</span>,
             link: "/myprofile"

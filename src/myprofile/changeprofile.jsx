@@ -1,11 +1,16 @@
 import React from "react";
-import "./logandsign.css";
+import "./changeprofile.css";
 import { withRouter, Link } from "react-router-dom";
 import Form from "../Components/form.jsx";
-import { setExpiry, clearCookie, setThing } from "../globals/globals.js";
+import {
+  setExpiry,
+  clearCookie,
+  setThing,
+  getCookie
+} from "../globals/globals.js";
 
 //finished
-class Login extends React.Component {
+class ChangeProfile extends React.Component {
   constructor(props) {
     super(props);
     this._ismounted = false;
@@ -27,11 +32,21 @@ class Login extends React.Component {
 
   submission(e) {
     //console.log(e);
+    let username = getCookie("username");
+    let firstname = getCookie("firstname");
+    let lastname = getCookie("lastname");
+    let email = getCookie("email");
+    let password = getCookie("password");
+    let bigboi = [firstname, lastname, username, email, password];
     clearCookie();
     let potat = this.arrayify(e);
     console.log(potat);
     for (let i in potat) {
-      setThing(potat[i]);
+      if (potat[i][1] !== "" || potat[i][1] !== bigboi[i]) {
+        setThing(potat[i]);
+      } else {
+        setThing([this.stylestring[i], this.bigboi[i]]);
+      }
     }
     setExpiry(10);
     console.log(document.cookie);
@@ -49,7 +64,7 @@ class Login extends React.Component {
   render() {
     return (
       <div className="App">
-        <span className="logintxt">Signup</span>
+        <span className="logintxt">Change your info:</span>
         <Form
           opacities={[true, true, true, true, true]}
           names={[
@@ -68,4 +83,4 @@ class Login extends React.Component {
   }
 }
 
-export default withRouter(Login);
+export default withRouter(ChangeProfile);

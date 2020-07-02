@@ -7,6 +7,7 @@ import SignUp from "./loginpages/signuppage.jsx";
 import MyProfile from "./myprofile/myprofile.jsx";
 import StarterPage from "./starterpages/startpagelogin.jsx";
 import BuildProfile from "./buildaprofile/buildaprofile.jsx";
+import ChangeProfile from "./myprofile/changeprofile.jsx";
 
 const routing = (
   <Router>
@@ -24,6 +25,11 @@ const routing = (
       <Route path="/myprofile">
         <div>
           <MyProfile />
+        </div>
+      </Route>
+      <Route path="/changeprofile">
+        <div>
+          <ChangeProfile />
         </div>
       </Route>
       <Route path="/buildprofile">
